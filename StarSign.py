@@ -20,6 +20,14 @@ def init_ortho():
     glLoadIdentity()  # clears whatever is already stored in camera/projection view
     gluOrtho2D(0, 640, 0, 480)  # sets up 2D orthographic viewing region, starting from 0-640 in x dir
 
+# Method that draws a point of a defined size with x, y coordinates
+def draw_star(x, y, size):
+    glPointSize(size)
+    glBegin(GL_POINTS)
+    glVertex2i(x, y)
+    glEnd()
+
+
 # This block of code allows the window to stay open - a loop that runs forever until the user quits.
 # This is our MAIN LOOP
 done = False  # setting this is a bool var to define if the user is done with the application window
@@ -33,15 +41,11 @@ while not done:
     glMatrixMode(GL_MODELVIEW)  # sets up openGL to start drawing objects in MODEL coordinate system - diff form
     # projection coordinate system for camera
     glLoadIdentity()  # clears whatever is in MODEL view
-    glPointSize(5)
-    glBegin(GL_POINTS)
-    glVertex2i(300, 400)
-    glVertex2i(310, 300)
-    glVertex2i(305, 250)
-    glVertex2i(220, 100)
-    glVertex2i(420, 80)
-    glEnd()
+    draw_star(300, 400, 17)
+    draw_star(310, 300, 10)
+    draw_star(305, 250, 25)
+    draw_star(220, 100, 10)
+    draw_star(420, 80, 10)
     pygame.display.flip()  # this flips display to second buffer (see screen var)
-    pygame.time.wait(100)  # this makes sure that our loop pauses for 100 msec before it loops again - Allows you to
-    # see animations. Completely optional
+
 pygame.quit()
