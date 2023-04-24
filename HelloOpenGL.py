@@ -17,7 +17,7 @@ pygame.display.set_caption('OpenGL in Python')  # this sets the title of the gam
 # Declare method that sets up camera. This is an orthographic projection
 def init_ortho():
     glMatrixMode(GL_PROJECTION)
-    glLoadIdentity()
+    glLoadIdentity()  # clears whatever is already stored in camera/projection view
     gluOrtho2D(0, 640, 0, 480)  # drawing the camera in 2D starting from 0-640 in x dir
 
 # This block of code allows the window to stay open - a loop that runs forever until the user quits
@@ -34,8 +34,11 @@ while not done:
     glLoadIdentity()  # clears whatever is in MODEL view
     glPointSize(5)
     glBegin(GL_POINTS)
-    glVertex2i(100, 50)
-    glVertex2i(630, 450)
+    glVertex2i(300, 400)
+    glVertex2i(310, 300)
+    glVertex2i(305, 250)
+    glVertex2i(220, 100)
+    glVertex2i(420, 80)
     glEnd()
     pygame.display.flip()  # this flips display to second buffer (see screen var)
     pygame.time.wait(100)  # this makes sure that our loop pauses for 100 msec before it loops again - Allows you to
